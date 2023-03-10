@@ -32,7 +32,9 @@ ev3.speaker.say("Let's go!")
 # Initialize a motor at port B.
 right_motor = Motor(Port.B)
 left_motor = Motor(Port.C)
+shoot_motor = Motor(Port.D)
 
 # make the motor go forward for 3 seconds.
 right_motor.run_time(-5000, 2000)
 left_motor.run_time(-5000, 2000)
+shoot_motor.run_time(5000, 20000)
