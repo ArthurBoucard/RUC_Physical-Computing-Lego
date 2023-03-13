@@ -29,12 +29,18 @@ ev3 = EV3Brick()
 # Write your program here.
 ev3.speaker.say("Let's go!")
 
-# Initialize a motor at port B.
+# Initialize motors.
 right_motor = Motor(Port.B)
 left_motor = Motor(Port.C)
-shoot_motor = Motor(Port.D)
+# shoot_motor = Motor(Port.D)
 
-# make the motor go forward for 3 seconds.
-right_motor.run_time(-5000, 2000)
-left_motor.run_time(-5000, 2000)
-shoot_motor.run_time(5000, 20000)
+#initailize sensors.
+color_sensor = ColorSensor(Port.S2)
+IR_sensor = InfraredSensor(Port.S3)
+
+while(1):
+    right_motor.run_time(5000, 100, Stop.BRAKE, False)
+    left_motor.run_time(5000, 100, Stop.BRAKE, True)
+    if (color_sensor.color() == Color.Black):
+        right_motor.run_time(-5000, 1800, Stop.BRAKE, False)
+        left_motor.run_time(-5000, 1800, Stop.BRAKE, True)
