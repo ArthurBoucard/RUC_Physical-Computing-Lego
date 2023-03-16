@@ -39,8 +39,9 @@ color_sensor = ColorSensor(Port.S2)
 IR_sensor = InfraredSensor(Port.S3)
 
 while(1):
-    right_motor.run_time(5000, 100, Stop.BRAKE, False)
-    left_motor.run_time(5000, 100, Stop.BRAKE, True)
-    if (color_sensor.color() == Color.Black):
+    right_motor.run(2000)
+    left_motor.run(2000)
+    if color_sensor.color() == Color.BLACK:
+        ev3.speaker.beep()
         right_motor.run_time(-5000, 1800, Stop.BRAKE, False)
         left_motor.run_time(-5000, 1800, Stop.BRAKE, True)
